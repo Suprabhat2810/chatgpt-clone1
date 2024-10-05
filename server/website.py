@@ -1,4 +1,4 @@
-from flask import render_template, send_file, redirect
+from flask import render_template, send_file, redirect, send_from_directory
 from time import time
 from os import urandom
 
@@ -8,8 +8,12 @@ class Website:
         self.app = app
         self.routes = {
             '/': {
-                'function': lambda: redirect('html/index.html'),
+                'function': lambda: redirect('/home'),  # Redirect to a valid route
                 'methods': ['GET', 'POST']
+            },
+            '/home': {
+                'function': lambda: send_from_directory('html', 'index.html'),
+                'methods': ['GET']
             },
             '/chat/': {
                 'function': self._index,
