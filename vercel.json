@@ -4,8 +4,6 @@
     { "src": "run.py", "use": "@vercel/python" }
   ],
   "routes": [
-    { "src": "/static/(.*)", "dest": "/static/$1" },
-    { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/(.*)", "dest": "/" }
   ]
 }
