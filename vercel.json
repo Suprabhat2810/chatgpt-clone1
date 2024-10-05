@@ -13,7 +13,7 @@
     },
     {
       "src": "templates/html/(.*)",
-      "dest": "/templates/$1"
+      "dest": "/run.py"
     },
     {
       "src": "/(.*)",
