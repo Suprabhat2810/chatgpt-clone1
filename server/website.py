@@ -31,8 +31,6 @@ class Website:
         }
 
     def _home(self):
-        if not os.path.exists('templates/html/index.html'):
-            return "Template not found", 404
         return render_template('html/index.html')
 
 
@@ -40,10 +38,10 @@ class Website:
         if not '-' in conversation_id:
             return redirect(f'/chat')
 
-        return render_template('index.html', chat_id=conversation_id)
+        return render_template('html/index.html', chat_id=conversation_id)
 
     def _index(self):
-        return render_template('index.html',
+        return render_template('html/index.html',
                                chat_id=f'{urandom(4).hex()}-{urandom(2).hex()}-{urandom(2).hex()}-{urandom(2).hex()}-{hex(int(time() * 1000))[2:]}')
 
     def _assets(self, folder: str, file: str):

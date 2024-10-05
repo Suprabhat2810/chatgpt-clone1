@@ -2,17 +2,17 @@
   "version": 2,
   "builds": [
     {
-      "src": "./index.py",
+      "src": "run.py",
       "use": "@vercel/python",
       "config": {
         "runtime": "python 3.12"
       }
     }
   ],
-  "routes":[
+  "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/run.py"
     }
   ],
   "env": {
