@@ -29,6 +29,12 @@ if __name__ == '__main__':
         )
 
 
+    @app.route('/home')
+    def home():
+        app.logger.debug("Home page accessed")
+        return render_template('html/index.html')
+
+
 
     print(f"Running on port {site_config['port']}")
     # app.run(**site_config)
