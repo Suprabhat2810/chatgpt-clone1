@@ -8,7 +8,7 @@ class Website:
         self.app = app
         self.routes = {
             '/': {
-                'function': lambda: redirect('/chat'),
+                'function': lambda: redirect('html/index.html'),
                 'methods': ['GET', 'POST']
             },
             '/chat/': {
