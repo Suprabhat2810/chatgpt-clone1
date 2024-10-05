@@ -12,7 +12,7 @@ class Website:
                 'methods': ['GET', 'POST']
             },
             '/home': {
-                'function': lambda: send_from_directory('html', 'index.html'),
+                'function': lambda: render_template('index.html'),
                 'methods': ['GET']
             },
             '/chat/': {
