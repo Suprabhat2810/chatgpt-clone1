@@ -12,12 +12,12 @@
       "dest": "/static/$1"
     },
     {
-      "src": "/html/(.*)",
+      "src": "templates/html/(.*)",
       "dest": "/templates/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/run.py"
+      "dest": "run.py"
     }
   ]
 }

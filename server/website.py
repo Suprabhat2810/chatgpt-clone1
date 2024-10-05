@@ -31,6 +31,7 @@ class Website:
         }
 
     def _home(self):
+        print("Accessed")
         return render_template('html/index.html')
 
 
