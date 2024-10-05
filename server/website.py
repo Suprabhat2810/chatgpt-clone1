@@ -8,11 +8,11 @@ class Website:
     def __init__(self, app) -> None:
         self.app = app
         self.routes = {
+            # '/': {
+            #     'function': lambda: redirect('/home'),  # Redirect to /home
+            #     'methods': ['GET', 'POST']
+            # },
             '/': {
-                'function': lambda: redirect('/home'),  # Redirect to /home
-                'methods': ['GET', 'POST']
-            },
-            '/home': {
                 'function': self._home,
                 'methods': ['GET']
             },
