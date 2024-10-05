@@ -8,11 +8,11 @@ class Website:
         self.app = app
         self.routes = {
             '/': {
-                'function': lambda: redirect('/home'),  # Redirect to a valid route
+                'function': lambda: redirect('/home'),  # Redirect to /home
                 'methods': ['GET', 'POST']
             },
             '/home': {
-                'function': lambda: render_template('index.html'),
+                'function': self._home,
                 'methods': ['GET']
             },
             '/chat/': {
@@ -28,6 +28,10 @@ class Website:
                 'methods': ['GET', 'POST']
             }
         }
+
+
+    def _home(self):
+        return render_template('index.html')
 
     def _chat(self, conversation_id):
         if not '-' in conversation_id:
