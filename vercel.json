@@ -2,25 +2,17 @@
   "version": 2,
   "builds": [
     {
-      "src": "run.py",
+      "src": "./index.py",
       "use": "@vercel/python",
       "config": {
         "runtime": "python 3.12"
       }
     }
   ],
-  "routes": [
-    {
-      "src": "/chat/(.*)",
-      "dest": "run.py"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "run.py"
-    },
+  "routes":[
     {
       "src": "/(.*)",
-      "dest": "run.py"
+      "dest": "/"
     }
   ],
   "env": {
