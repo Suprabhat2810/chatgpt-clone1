@@ -8,7 +8,7 @@ class Website:
         self.app = app
         self.routes = {
             '/': {
-                'function': self._home,
+                'function': self.home,
                 'methods': ['GET']
             },
             '/chat/': {
@@ -26,8 +26,8 @@ class Website:
         }
 
 
-    def _home(self):
-        return render_template('index.html')
+    def home(self):
+        return render_template('html/index.html')
 
     def _chat(self, conversation_id):
         if not '-' in conversation_id:
