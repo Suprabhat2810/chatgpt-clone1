@@ -26,5 +26,5 @@ if __name__ == '__main__':
 
     print(f"Running on port {site_config['port']}")
     # app.run(**site_config)
-    app.run(host=site_config['host'], port=site_config['port'],debug=True)
+    app.run(host=site_config['host'], port=site_config['port'])
     print(f"Closing port {site_config['port']}")
