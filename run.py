@@ -13,6 +13,10 @@ def log_request_info():
     app.logger.debug('Headers: %s', request.headers)
     app.logger.debug('Body: %s', request.get_data())
 
+@app.route('/home')
+def home():
+    return ('<h1>Welcome To VerCHell<h1>')
+
 if __name__ == '__main__':
     config = load(open('config.json', 'r'))
     site_config = config['site_config']
@@ -32,6 +36,7 @@ if __name__ == '__main__':
             view_func=backend_api.routes[route]['function'],
             methods=backend_api.routes[route]['methods'],
         )
+
 
     print(f"Running on port {site_config['port']}")
     app.run(**site_config)
