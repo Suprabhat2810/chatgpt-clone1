@@ -32,10 +32,11 @@ class Website:
         return render_template('index.html', chat_id=conversation_id)
 
     def _index(self):
-        return render_template('index.html', chat_id=f'{urandom(4).hex()}-{urandom(2).hex()}-{urandom(2).hex()}-{urandom(2).hex()}-{hex(int(time() * 1000))[2:]}')
+        return render_template('index.html',
+                               chat_id=f'{urandom(4).hex()}-{urandom(2).hex()}-{urandom(2).hex()}-{urandom(2).hex()}-{hex(int(time() * 1000))[2:]}')
 
     def _assets(self, folder: str, file: str):
         try:
-            return send_file(f"./../client/{folder}/{file}", as_attachment=False)
+            return send_file(f"client/{folder}/{file}", as_attachment=False)
         except:
             return "File not found", 404

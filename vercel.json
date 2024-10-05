@@ -9,10 +9,18 @@
       }
     }
   ],
-  "routes":[
+  "routes": [
+    {
+      "src": "/chat/(.*)",
+      "dest": "run.py"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "run.py"
+    },
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "run.py"
     }
   ],
   "env": {
