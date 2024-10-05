@@ -1,6 +1,7 @@
 from flask import render_template, send_file, redirect
 from time import time
 from os import urandom
+import os
 
 
 class Website:
@@ -8,7 +9,11 @@ class Website:
         self.app = app
         self.routes = {
             '/': {
-                'function': self.home,
+                'function': lambda: redirect('/home'),  # Redirect to /home
+                'methods': ['GET', 'POST']
+            },
+            '/home': {
+                'function': self._home,
                 'methods': ['GET']
             },
             '/chat/': {
@@ -25,9 +30,11 @@ class Website:
             }
         }
 
-
-    def home(self):
+    def _home(self):
+        if not os.path.exists('templates/html/index.html'):
+            return "Template not found", 404
         return render_template('html/index.html')
+
 
     def _chat(self, conversation_id):
         if not '-' in conversation_id:
@@ -41,6 +48,6 @@ class Website:
 
     def _assets(self, folder: str, file: str):
         try:
-            return send_file(f"client/{folder}/{file}", as_attachment=False)
+            return send_file(f"templates/{folder}/{file}", as_attachment=False)
         except:
             return "File not found", 404

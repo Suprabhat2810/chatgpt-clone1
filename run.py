@@ -1,12 +1,16 @@
 from server.app import app
 from server.website import Website
 from server.backend import Backend_Api
-
+from flask import render_template
 from json import load
 
 if __name__ == '__main__':
     config = load(open('config.json', 'r'))
     site_config = config['site_config']
+
+    # @app.route('/')
+    # def home():
+    #     return render_template('index.html')
 
     site = Website(app)
     for route in site.routes:
@@ -24,7 +28,9 @@ if __name__ == '__main__':
             methods=backend_api.routes[route]['methods'],
         )
 
+
+
     print(f"Running on port {site_config['port']}")
     # app.run(**site_config)
-    app.run(host=site_config['host'], port=site_config['port'])
+    app.run(host=site_config['host'], port=site_config['port'],debug=True)
     print(f"Closing port {site_config['port']}")
