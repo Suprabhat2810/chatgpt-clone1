@@ -1,16 +1,21 @@
+import logging
 from server.app import app
 from server.website import Website
 from server.backend import Backend_Api
-from flask import render_template
+from flask import render_template, request
 from json import load
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG)
+
+@app.before_request
+def log_request_info():
+    app.logger.debug('Headers: %s', request.headers)
+    app.logger.debug('Body: %s', request.get_data())
 
 if __name__ == '__main__':
     config = load(open('config.json', 'r'))
     site_config = config['site_config']
-
-    # @app.route('/')
-    # def home():
-    #     return render_template('index.html')
 
     site = Website(app)
     for route in site.routes:
@@ -28,15 +33,6 @@ if __name__ == '__main__':
             methods=backend_api.routes[route]['methods'],
         )
 
-
-    @app.route('/')
-    def home():
-        app.logger.debug("Home page accessed")
-        return render_template('html/index.html')
-
-
-
     print(f"Running on port {site_config['port']}")
-    # app.run(**site_config)
-    app.run()
+    app.run(**site_config)
     print(f"Closing port {site_config['port']}")
