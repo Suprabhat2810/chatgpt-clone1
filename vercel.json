@@ -16,7 +16,7 @@
       "dest": "/templates/$1"
     },
     {
-      "src": "/(.*)",
+      "src": "server/(.*)",
       "dest": "run.py"
     }
   ]
